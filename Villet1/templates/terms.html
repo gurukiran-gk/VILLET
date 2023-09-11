@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Villet-Sign-up </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   </head>
+<body>
+  <div class="wrapper" style="max-width: 1130px;">
+    <h2>
+        Terms and Conditions:
+    </h2>
+    <br>
+    <ol>
+<h4><li> Payment Terms: By using the credit card issued by Villet, the cardholder agrees to adhere to the following payment terms. Failure to comply with these terms may result in additional charges and penalties.</li></h4>
+
+<h4><li> Due Date: The cardholder is required to make the minimum payment amount indicated on the monthly billing statement by the specified due date. The due date will be clearly mentioned on the statement.</li></h4>
+
+<h4><li> Late Payment Charges: If the payment is not received by the due date, a late payment charge of 0.5% of the outstanding balance will be imposed. This charge will be applicable for the period from the due date until the payment is received.</li></h4>
+
+<h4><li> Grace Period: A grace period of 15 days is provided after the due date. During this period, if the payment is made, only a penalty charge of 2% of the outstanding balance will be applied.</li></h4>
+
+<h4><li> Extended Late Payment: If the payment is not received within the grace period of 15 days, an extended late payment charge of 4% of the outstanding balance will be imposed. This charge will be applicable for the next 15-day period.</li></h4>
+
+<h4><li> Monthly Late Payment: If the payment remains overdue beyond the extended late payment period, a monthly late payment charge of 12% of the outstanding balance will be applied for every subsequent one-month period until the payment is received.</li></h4>
+
+<h4><li> Minimum Payment: The cardholder is required to make a minimum payment each month as stated on the billing statement. Failure to make the minimum payment may result in additional fees and penalties.</li></h4>
+
+<h4><li> Interest Charges: Apart from the late payment charges, interest charges will be applicable on any remaining outstanding balance as per the agreed-upon interest rate mentioned in the cardholder agreement.</li></h4>
+
+<h4><li> Account Suspension: Failure to make payments for an extended period may result in the suspension or restriction of the credit card account. This can affect the cardholder's ability to make further transactions and may lead to additional consequences as per the terms and conditions.</li></h4>
+
+<h4><li> Change in Terms: Villet reserves the right to modify or change the terms and conditions related to late payment charges and penalties. Any such changes will be communicated to the cardholder through official communication channels.</li></h4>
+
+</ol>
+<br>
+<a href="{% url 'reg' %}">back</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,514 @@
+{%  load static  %}
+{%  csrf_token  %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Villet</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'static1/vendors/mdi/css/materialdesignicons.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'static1/vendors/css/vendor.bundle.base.css'  %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'static1/vendors/jvectormap/jquery-jvectormap.css'  %}">
+    <link rel="stylesheet" href="{% static 'static1/vendors/flag-icon-css/css/flag-icon.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'static1/vendors/owl-carousel-2/owl.carousel.min.css'  %}">
+    <link rel="stylesheet" href="{% static 'static1/vendors/owl-carousel-2/owl.theme.default.min.css'  %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'static1/css/style.css'  %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'static1/images/favicon.png'  %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="{% url 'dashboard'  %}"><img src="{% static 'static1/images/logo.jpg'  %}" alt="logo" style="height:70px ;width:300px;"/></a>
+          <a class="sidebar-brand brand-logo-mini" href="{% url 'dashboard'  %}"><img src="{% static 'static1/images/logo-mini.jpg'  %}" alt="logo" style="height:60px ;width:60px;"/></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="{% static 'static1/images/faces/face15.jpg'  %}" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">{{user_data.username}}</h5>
+                  <span>Gold Member</span>
+                </div>
+              </div>
+              
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Dashboard</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'dashboard'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Home</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'transaction'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Transaction</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'dashboard'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Credit Limit-Score</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'dashboard'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Rewards and Offers</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'bill'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Bills</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'autopay'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Autopay</span>
+            </a>
+          </li>
+          <br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'dashboard'  %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Customer Support</span>
+            </a>
+          </li>
+          <br>
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="{% url 'dashboard'  %}"><img src="{% static 'static1/images/logo-mini.svg'  %}" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav navbar-nav-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="'#'" data-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <img class="img-xs rounded-circle" src="{% static 'static1/images/faces/face15.jpg'  %}" alt="">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{user_data.first_name}}</p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                  <h6 class="p-3 mb-0">Profile</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-settings text-success"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Settings</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="{% url 'logout'  %}" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-logout text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Log out</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            {% if activeuser is not None %}
+
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'static1/images/dashboard/Group126@2x.png'  %}" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        <h4 class="mb-1 mb-sm-0">Your Villet Credit Card is Now Active </h4>
+                        <p class="mb-0 font-weight-normal d-none d-sm-block">Simplify your Finacial Journey </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% elif user_data.user_id >= 1 %}
+
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'static1/images/dashboard/Group126@2x.png'  %}" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        <h4 class="mb-1 mb-sm-0">Your request to Villet Credit Card is under process</h4>
+                        <p class="mb-0 font-weight-normal d-none d-sm-block">Will be Activated soon... </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% else %}
+
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'static1/images/dashboard/Group126@2x.png'  %}" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        <h4 class="mb-1 mb-sm-0">Get your First Villet Credit Card Now..!</h4>
+                        <p class="mb-0 font-weight-normal d-none d-sm-block">Simplify your Finacial Journey </p>
+                      </div>
+                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+                        <span>
+                          <a href="{% url 'reg2'  %}" class="btn btn-outline-light btn-rounded get-started-btn">GET NOW..</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% endif %}
+            
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card" style="background-image: linear-gradient(to right, #8A2BE2, #87CEEB);">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                      <div class="col-5 col-sm-7 col-xl-8 p-0" >
+                        <h3 class="mb-1 mb-sm-0" style="padding-top: 20px; padding-bottom: 20px;">  Villet  |  Home   </h3>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0">Rs.
+                            {% if activeuser is not Null %}
+                               {{activeuser.credit_limit}}
+                            {% else %}
+                                0.00
+                            {% endif %}
+                          </h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium"></p>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="icon icon-box-success ">
+                          <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Credit Limit</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0">
+                              {% if activeuser is not Null %}
+                                {{activeuser.credit_score}}
+                              {% else %}
+                                  000
+                              {% endif %}
+                          </h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium"></p>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="icon icon-box-success">
+                          <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Credit Score</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0">
+                            {% if activeuser is not Null %}
+                              {{activeuser.credit_points}}
+                            {% else %}
+                                000
+                            {% endif %}
+                        </h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium"></p>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="icon icon-box-success">
+                          <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Credit Points</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="d-flex align-items-center align-self-start" style="padding-bottom: 8px;">
+                          <h3 class="mb-0">&ensp;
+                            <h3 class="mb-0">
+                              {% if activeuser is not Null %}
+                                  {{activeuser.card_number}}
+                              {% else %}
+                                  XXXX XXXX XXXX XXXX
+                              {% endif %}
+                          </h3>
+                          </h3>
+                        </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Credit Card Number</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Transaction Vs Credit limit</h4>
+                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                      <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Total Transaction</h6>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h4 class="font-weight-bold mb-0">{{amt}}</h4>
+                      </div>
+                    </div>
+                    <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                      <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Credit limit Balance</h6>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h4 class="font-weight-bold mb-0">{{pcre}}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title mb-1">Last Transaction</h4>
+                      <p class="text-muted mb-1">Your data status</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        {% for transaction in transactions %}
+                        <div class="preview-list">
+                          <div class="preview-item border-bottom">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-primary">
+                                <i class="mdi mdi-arrow-top-right"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">{{ transaction.Transaction_Name}}</h6>
+                                <p class="text-muted mb-0">{{ transaction.transaction_type }}</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">Date | Time</p>
+                                <p class="text-muted">{{ transaction.date_time}}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Transaction Type-1</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h2 class="mb-0">32123</h2>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
+                      </div>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Transaction Type-2</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h2 class="mb-0">45850</h2>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
+                        </div>
+                        <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
+                      </div>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Transaction Type-3</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h2 class="mb-0">2039</h2>
+                          <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
+                      </div>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          <script>
+           alert("{{ message }}") ;
+          </script>
+        </div>
+        {% endfor %}
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'static1/vendors/js/vendor.bundle.base.js'  %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'static1/vendors/chart.js/Chart.min.js'  %}"></script>
+    <script src="{% static 'static1/vendors/progressbar.js/progressbar.min.js'  %}"></script>
+    <script src="{% static 'static1/vendors/jvectormap/jquery-jvectormap.min.js'  %}"></script>
+    <script src="{% static 'static1/vendors/jvectormap/jquery-jvectormap-world-mill-en.js'  %}"></script>
+    <script src="{% static 'static1/vendors/owl-carousel-2/owl.carousel.min.js'  %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'static1/js/off-canvas.js'  %}"></script>
+    <script src="{% static 'static1/js/hoverable-collapse.js'  %}"></script>
+    <script src="{% static 'static1/js/misc.js'  %}"></script>
+    <script src="{% static 'static1/js/settings.js'  %}"></script>
+    <script src="{% static 'static1/js/todolist.js'  %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'static1/js/dashboard.js'  %}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
